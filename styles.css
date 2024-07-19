@@ -1,0 +1,78 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.numeric {
+    height: 60px;
+    width: 80px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.sevenEightNine,
+.oneTwoThree,
+.fourFiveSix {
+    display: flex;
+}
+
+.func {
+    background-color: #ffb458;
+}
+
+.displayArea {
+    height: 60px;
+    width: auto;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: gainsboro;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.zeroDecimal {
+    display: flex;
+}
+
+
+.decimal {
+    height: 60px;
+    width: 80px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.zero {
+    width: 160px;
+    height: 60px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.entireCalculator {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    background-color: black;
+
+}
+
+.extraItems {
+    display: flex;
+}
+
+.functions {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.container {
+    display: flex;
+    background-color: black;
+}
