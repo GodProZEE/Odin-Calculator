@@ -43,6 +43,7 @@ body {
     justify-content: flex-end;
     align-items: center;
     font-weight: bold;
+    color: black;
 }
 
 .zeroDecimal {
