@@ -1,5 +1,6 @@
 
 body, input, textarea, button {
+    color: white;
     font-weight: 400;
     font-style: normal;
     font-size: 40px;
@@ -18,7 +19,7 @@ body {
 .numeric {
     height: 60px;
     width: 80px;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 3px;
 }
 
@@ -35,7 +36,7 @@ body {
 .displayArea {
     height: 60px;
     width: auto;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 3px;
     background-color: gainsboro;
     display: flex;
@@ -52,21 +53,21 @@ body {
 .decimal {
     height: 60px;
     width: 80px;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 3px;
 }
 
 .zero {
     width: 160px;
     height: 60px;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 3px;
 }
 
 .entireCalculator {
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    border: 2px solid white;
     background-color: black;
 
 }
@@ -88,7 +89,7 @@ body {
 .equals {
     height: 60px;
     width: 80px;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 3px;
     background-color: #ffb458;
 }
