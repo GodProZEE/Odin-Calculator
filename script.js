@@ -13,7 +13,10 @@ function multiply(a, b) {
 function divide(a, b) {
     return a/b;
 }
-
+let clickEvent = new Event('click', {
+    bubbles: true,
+}
+);
 
 function operate(firstNumber, operator, secondNumber) {
     switch (operator) {
@@ -106,84 +109,102 @@ function clearEverything() {
     displayArea.textContent = ''
 }
 
-container.addEventListener('click', (e) => {
-    if (e.target.classList.contains('clickNo')) {
-        displayArea.setAttribute('style', 'font-size: 18px')
-        displayArea.textContent = 'What do you get by doing stuff like this';
-        setTimeout(clearEverything, 3000)
-    } else {
-        displayArea.setAttribute('style', 'font-size: 40px')
-    }
-
-    if (e.target.classList.contains('clear')) {
-        clearEverything()
-    } else {
-    if (e.target.classList.contains('number') || e.target.classList.contains('operation') || e.target.classList.contains('equals') || e.target.classList.contains('decimal')) {
-        statement += e.target.textContent;
-        if (operatorArray.includes(statement[0]) && firstOperator == '') {
-            firstOperator = statement[0];
-            statement = statement.slice(1)
-            displayValue += statement;
-            displayArea.textContent = displayValue;
-            
+let buttons = document.querySelectorAll('button');
+for (let x = 0; x < buttons.length; x++) {
+    buttons[x].addEventListener('click', (e) => {
+        if (e.target.classList.contains('clickNo')) {
+            displayArea.setAttribute('style', 'font-size: 18px')
+            displayArea.textContent = 'What do you get by doing stuff like this';
+            setTimeout(clearEverything, 3000)
         } else {
-            if (firstOperator === '') {
-                firstOperator = "+";
-            }
+            displayArea.setAttribute('style', 'font-size: 40px')
         }
 
-        console.log(searchForDecimal(firstNumber))
-        if ((e.target.classList.contains('number') || e.target.classList.contains('decimal')) && secondOperator === '' && thirdOperator === '') {
-                if (searchForDecimal(firstNumber) === true && e.target.classList.contains('decimal')) {
-                } else {
-                displayValue += e.target.textContent;
-                firstNumber = firstOperator + displayValue;
-                if (firstNumber[0] === '+') {
-                displayArea.textContent = firstNumber.slice(1);
-                } else {
-                    displayArea.textContent = firstNumber;
-                }
-            }
-            
-            
-
-            actualFirstNumber = Number(firstNumber)
+        if (e.target.classList.contains('clear')) {
+            clearEverything()
         } else {
-            if (e.target.classList.contains('operation') && actualFirstNumber !== null && secondOperator == '' && thirdOperator === '') {
-                secondOperator = e.target.textContent;                
+        if (e.target.classList.contains('number') || e.target.classList.contains('operation') || e.target.classList.contains('equals') || e.target.classList.contains('decimal')) {
+            statement += e.target.textContent;
+            if (operatorArray.includes(statement[0]) && firstOperator == '') {
+                firstOperator = statement[0];
+                statement = statement.slice(1)
+                displayValue += statement;
+                displayArea.textContent = displayValue;
+                
             } else {
-                if (e.target.classList.contains('operation') && secondOperator !== '' && thirdOperator == '') {
-                    thirdOperator = e.target.textContent;
-                    console.log("thirdOperator being set automatically")
-                    
-                }
-        }
-
-            if ((e.target.classList.contains('number') || e.target.classList.contains('decimal')) && secondOperator !== '') {
-                if (thirdOperator === '') {
-                    thirdOperator = '+'
-                }
-                if (searchForDecimal(secondNumber) === true && e.target.classList.contains('decimal')) {
-                } else {
-                secondDisplay += e.target.textContent;
-                secondNumber = thirdOperator + secondDisplay
-                if (secondNumber[0] === '+') {
-                    displayArea.textContent = secondNumber.slice(1);
-                } else {
-                    displayArea.textContent = secondNumber;
+                if (firstOperator === '') {
+                    firstOperator = "+";
                 }
             }
+
+            console.log(searchForDecimal(firstNumber))
+            if ((e.target.classList.contains('number') || e.target.classList.contains('decimal')) && secondOperator === '' && thirdOperator === '') {
+                    if (searchForDecimal(firstNumber) === true && e.target.classList.contains('decimal')) {
+                    } else {
+                    displayValue += e.target.textContent;
+                    firstNumber = firstOperator + displayValue;
+                    if (firstNumber[0] === '+') {
+                    displayArea.textContent = firstNumber.slice(1);
+                    } else {
+                        displayArea.textContent = firstNumber;
+                    }
+                }
+                
                 
 
-                actualSecondNumber = Number(secondNumber);
+                actualFirstNumber = Number(firstNumber)
+            } else {
+                if (e.target.classList.contains('operation') && actualFirstNumber !== null && secondOperator == '' && thirdOperator === '') {
+                    secondOperator = e.target.textContent;                
+                } else {
+                    if (e.target.classList.contains('operation') && secondOperator !== '' && thirdOperator == '') {
+                        thirdOperator = e.target.textContent;
+                        console.log("thirdOperator being set automatically")
+                        
+                    }
             }
 
-                if (actualFirstNumber !== null && actualSecondNumber !== null && secondOperator !== '' && thirdOperator !== '' && ((e.target.classList.contains('operation')) || e.target.classList.contains('equals'))) {
-                    operateAndReduce()
+                if ((e.target.classList.contains('number') || e.target.classList.contains('decimal')) && secondOperator !== '') {
+                    if (thirdOperator === '') {
+                        thirdOperator = '+'
+                    }
+                    if (searchForDecimal(secondNumber) === true && e.target.classList.contains('decimal')) {
+                    } else {
+                    secondDisplay += e.target.textContent;
+                    secondNumber = thirdOperator + secondDisplay
+                    if (secondNumber[0] === '+') {
+                        displayArea.textContent = secondNumber.slice(1);
+                    } else {
+                        displayArea.textContent = secondNumber;
+                    }
                 }
-                                
+                    
 
+                    actualSecondNumber = Number(secondNumber);
+                }
+
+                    if (actualFirstNumber !== null && actualSecondNumber !== null && secondOperator !== '' && thirdOperator !== '' && ((e.target.classList.contains('operation')) || e.target.classList.contains('equals'))) {
+                        operateAndReduce()
+                    }
+                                    
+
+            }
         }
     }
+})
 }
-}) 
+
+
+for (let i = 0; i < buttons.length; i++) {
+buttons[i].addEventListener('keydown', (e) => {
+    e.preventDefault() 
+    console.log(e.key)
+    for (let i = 0; i<buttons.length; i++) {
+        e.preventDefault() 
+        if (buttons[i].id == e.key) {
+            e.preventDefault() 
+            buttons[i].dispatchEvent(clickEvent)
+        }
+    }
+})
+}
